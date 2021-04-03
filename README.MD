@@ -1,6 +1,6 @@
 # Powershell find and delete duplicate files
 
->Attention! This script deletes files! Use only at your own risk! I do not take any responsibility! Only use the script if you understand what it is doing. 
+>**Attention! This script deletes files! Use only at your own risk! I do not take any responsibility! Only use the script if you understand what it is doing.** 
 
 ## how to use
 
@@ -10,7 +10,7 @@ There are two scripts. The first one is  ``getInventur.ps1``. The script ask you
 .\getInventur.ps1
 ```
 
-The second script ``.\deleteDuplicateFiles.ps1`` open a form where you can choose options.
+The second script ``.\deleteDuplicateFiles.ps1`` open a form where you can choose some options.
 
 1. check
     + checks the All-Duplicate-Files.csv and mark the files to delete on several options
@@ -19,25 +19,23 @@ The second script ``.\deleteDuplicateFiles.ps1`` open a form where you can choos
         + select (leve) only the first findet file
 
 2. move
-    + ask you for the Backupfolder and move the tiles selected to delete in this folder
+    + it ask you for the Backupfolder, and move the files selected to delete in this folder with Folder-Structure
 
 3. delete
-    + delete your to delete selected files 
+    + remove your to delete selected files 
         + into recycle-bin
-        + permanent (not implement yet)
+        + permanent (not implement yet - todo)
 
 3. delete empty folder
     + scan selected folder for empty subfolder and delete them into recycle bin
-
-
 
 ```powershell
 .\deleteDuplicateFiles.ps1
 ```
 
 
->it is strongly recomendet to make a Backup first!
+>**it is strongly recomendet to make a Backup first!**
 
 ``
-2021.04.03 (c) Vitaly Ruhl
+2021.04.04 (c) Vitaly Ruhl
 ``

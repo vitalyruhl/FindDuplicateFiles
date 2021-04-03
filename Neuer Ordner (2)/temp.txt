@@ -1,0 +1,50 @@
+
+
+CodeBase            : file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Windows.Forms/v4.0_4.0.0.0__
+                      b77a5c561934e089/System.Windows.Forms.dll
+FullName            : System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+EntryPoint          :
+DefinedTypes        : {FXAssembly, ThisAssembly, AssemblyRef, System.AccessibilityImprovements...}
+Evidence            : {<System.Security.Policy.GacInstalled version="1"/>
+                      , <System.Security.Policy.Hash version="2">
+                      <hash algorithm="SHA1"
+                      value="A4ABE578BAFA68BB9B8BC08C57891379499DB7C0"/>
+                      <hash algorithm="SHA256"
+                      value="B4D4F92604D1CDC126ECBC4B6C2E1CB543C42B5B78E7AFEB883EB941E7409BEC"/>
+                      <hash algorithm="MD5"
+                      value="E912352187E9CF7A0A4791431ED93D4F"/>
+                      </System.Security.Policy.Hash>
+                      , <StrongName version="1"
+                      Key="00000000000000000400000000000000"
+                      Name="System.Windows.Forms"
+                      Version="4.0.0.0"/>
+                      , <System.Security.Policy.Url version="1">
+                      <Url>file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Windows.Forms/v4.0_4.0.
+                      0.0__b77a5c561934e089/System.Windows.Forms.dll</Url>
+                      </System.Security.Policy.Url>
+                      ...}
+PermissionSet       : {}
+SecurityRuleSet     : Level1
+ManifestModule      : System.Windows.Forms.dll
+ReflectionOnly      : False
+Location            : C:\WINDOWS\Microsoft.Net\assembly\GAC_MSIL\System.Windows.Forms\v4.0_4.0.0.0__b77a5c56
+                      1934e089\System.Windows.Forms.dll
+ImageRuntimeVersion : v4.0.30319
+GlobalAssemblyCache : True
+HostContext         : 0
+IsDynamic           : False
+EscapedCodeBase     : file:///C:/WINDOWS/Microsoft.Net/assembly/GAC_MSIL/System.Windows.Forms/v4.0_4.0.0.0__
+                      b77a5c561934e089/System.Windows.Forms.dll
+ExportedTypes       : {System.Resources.ResXDataNode, System.Resources.ResXFileRef,
+                      System.Resources.ResXResourceReader, System.Resources.ResXResourceSet...}
+IsFullyTrusted      : True
+CustomAttributes    : {[System.Resources.SatelliteContractVersionAttribute("4.0.0.0")], [System.Diagnostics.
+                      DebuggableAttribute((System.Diagnostics.DebuggableAttribute+DebuggingModes)2)],
+                      [System.Runtime.CompilerServices.DependencyAttribute("System,",
+                      (System.Runtime.CompilerServices.LoadHint)1)],
+                      [System.Runtime.CompilerServices.DependencyAttribute("System.Drawing,",
+                      (System.Runtime.CompilerServices.LoadHint)1)]...}
+Modules             : {System.Windows.Forms.dll}
+
+Length : 59

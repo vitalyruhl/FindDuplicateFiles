@@ -69,7 +69,8 @@ if ($AdminRightsRequired){
         . .\module\checkform.ps1 
     }
     function MoveItems() {
-        SetDebugState($true)
+        SetDebugState($false)
+        $global:Modul = "MoveItems()"
         Write-debug "`r`n`r`n------------------------------------------------------`r`n"
         write-Debug "Move Items are called"
        
@@ -117,7 +118,7 @@ if ($AdminRightsRequired){
            
             }
             catch { 
-                Write-Warning "$global:Modul -  Something went wrong" 
+                Write-Warning "$global:Modul -  Something went wrong on $_" 
             }	
         }
 
@@ -125,7 +126,34 @@ if ($AdminRightsRequired){
 
     }
     function DeleteItems() {
+        $global:Modul = "DeleteItems()"
+        SetDebugState($false)
+        Write-debug "`r`n`r`n------------------------------------------------------`r`n" 
+        Write-debug "`r`n`r`n------------------------------------------------------`r`n"
         write-Debug "Delete Items are called"
+        
+        Write-debug 'Load CSV'
+        $csv = import-Csv -Path $CSVTable #| Select-Object -Property MD5Hash, Name ,Extension, FullName, DirectoryName, CreationTime ,LastWriteTime ,MarkToDelete
+        
+        Write-debug "`r`n`r`n------------------------------------------------------`r`n"
+        Write-debug 'Get files to delete:'
+        $FilesToDelete = $csv | Where-Object{$_.MarkToDelete -eq $true}
+        #$FilesToDelete | Write-debug 
+        $FilesToDelete | ForEach-Object {
+           
+            try {
+                $it = Get-Item $(Resolve-Path $_.FullName) 
+                Write-debug "File to delete is selected -->"
+                $it | Write-debug 
+                Write-debug "<-- File to delete"
+                #$it | remove-Item -Force
+                $it | Send-ToRecycleBin -Force
+           
+            }
+            catch { 
+                Write-Warning "$global:Modul -  Something went wrong on $_" 
+            }	
+        }
     }
     function okButtonClick (){
         #Radiobuttons...

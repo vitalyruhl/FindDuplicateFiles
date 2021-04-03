@@ -155,6 +155,67 @@ if ($AdminRightsRequired){
             }	
         }
     }
+    function DeleteEmptyFolder() {
+        SetDebugState($true)
+        $global:Modul = "DeleteEmptyFolder()"
+        Write-debug "`r`n`r`n------------------------------------------------------`r`n"
+        write-Debug "DeleteEmptyFolder are called"
+       
+        $SD = Get-ScriptDirectory
+        Write-Host "Please select directory to search in..."
+        $SerchPath = Get-FolderDialog ("$SD")
+
+        if ($SerchPath -eq "-CANCEL-"){
+            Write-Warning "No Folder selected - Exit Script"
+            exit
+        }
+        elseif ($SerchPath -eq "-ERROR-") {
+            Write-Error "Error in Get-Folder-Dialog - Exit Script"
+            exit
+        }
+
+        #$SerchPath | Get-Member
+        Write-host "Selected folder for Search is:$SerchPath"
+
+        
+
+        Write-debug "`r`n`r`n------------------------------------------------------`r`n"
+        Write-debug 'Get Folder to delete:'
+
+         #https://stackoverflow.com/questions/28631419/how-to-recursively-remove-all-empty-folders-in-powershell
+        <########################################################################
+            define a script block that will remove empty folders under a root folder, 
+            using tail-recursion to ensure that it only walks the folder tree once. 
+            -Force is used to be able to process hidden files/folders as well.
+        ########################################################################>
+        $tailRecursion = {
+           
+            param(
+                $Path
+            )
+
+            foreach ($childDirectory in Get-ChildItem -Force -LiteralPath $Path -Directory) {
+                    & $tailRecursion -Path $childDirectory.FullName
+                }
+        
+            try { 
+                $currentChildren = Get-ChildItem -Force -LiteralPath $Path
+                $isEmpty = $null -eq $currentChildren
+                if ($isEmpty) {
+                    Write-Verbose "Removing empty folder at path '${Path}'." -Verbose
+                    Remove-Item -Force -LiteralPath $Path -WhatIf
+                }
+           
+            }
+            catch { 
+                Write-Warning "$global:Modul -  Something went wrong" 
+            }	
+        }
+
+        & $tailRecursion -Path $SerchPath
+
+    }
+
     function okButtonClick (){
         #Radiobuttons...
         #foreach ($o in @($radioButton1, $radioButton2, $radioButton3)){
@@ -165,6 +226,7 @@ if ($AdminRightsRequired){
         if ($radioButton1.Checked){CheckToDelItems} 
         elseif ($radioButton2.Checked) {MoveItems}  
         elseif ($radioButton3.Checked) {DeleteItems}  
+        elseif ($radioButton4.Checked) {DeleteEmptyFolder}  
 
         #checkboxes
         #If ($objTypeCheckbox.Checked = $true)
@@ -193,7 +255,7 @@ if ($AdminRightsRequired){
             $MarkBy
         )
         
-        SetDebugState($true)
+        SetDebugState($false)
         Write-Debug "param:[$MarkBy]"
         
         Write-debug "`r`n`r`n------------------------------------------------------`r`n"

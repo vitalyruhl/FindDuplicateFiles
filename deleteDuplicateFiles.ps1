@@ -195,17 +195,19 @@ if ($AdminRightsRequired){
                 param(
                     $Path
                 )
-
-                foreach ($childDirectory in Get-ChildItem -Force -LiteralPath $Path -Directory) {
-                        & $tailRecursion -Path $childDirectory.FullName
-                    }
-            
+                
                 try { 
+                    foreach ($childDirectory in Get-ChildItem -Force -LiteralPath $Path -Directory) {
+                            & $tailRecursion -Path $childDirectory.FullName
+                        }
+                
+               
                     $currentChildren = Get-ChildItem -Force -LiteralPath $Path
                     $isEmpty = $null -eq $currentChildren
                     if ($isEmpty) {
                         Write-Verbose "Removing empty folder at path '${Path}'." -Verbose
-                        Remove-Item -Force -LiteralPath $Path -WhatIf
+                        #todo add a custom form to confirm , confirm all where i can see all the Folder to delete! -> make a hashtable hier and delete later...
+                        Remove-Item -Force -LiteralPath $Path -Confirm:$true #-WhatIf
                     }
             
                 }

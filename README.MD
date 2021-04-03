@@ -1,6 +1,6 @@
-# Powershell find and delete duplicate files
+# Powershell script to find and/or delete duplicate files
 
->**Attention! This script deletes files! Use only at your own risk! I do not take any responsibility! Only use the script if you understand what it is doing.** 
+>**Attention! This script can deletes files! Use only at your own risk! Only use the script if you understand what it is doing.** 
 
 ## how to use
 

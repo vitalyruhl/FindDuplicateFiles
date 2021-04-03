@@ -147,7 +147,7 @@ if ($AdminRightsRequired){
                 $it | Write-debug 
                 Write-debug "<-- File to delete"
                 #$it | remove-Item -Force
-                $it | Send-ToRecycleBin -Force
+                $it | Send-ToRecycleBin #-Force
            
             }
             catch { 

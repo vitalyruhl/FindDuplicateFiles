@@ -303,7 +303,7 @@ Function Send-ToRecycleBin
     Begin{$shell = New-Object -ComObject 'Shell.Application'}
     Process{
         $Item = Get-Item $FilePath
-$shell.namespace(0).ParseName($item.FullName).InvokeVerb('delete')
+        $shell.namespace(0).ParseName($item.FullName).InvokeVerb('delete')
     }
 }
 #endregion

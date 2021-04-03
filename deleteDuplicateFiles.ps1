@@ -173,47 +173,49 @@ if ($AdminRightsRequired){
             Write-Error "Error in Get-Folder-Dialog - Exit Script"
             exit
         }
-
-        #$SerchPath | Get-Member
-        Write-host "Selected folder for Search is:$SerchPath"
-
+        else {
+            
         
+            #$SerchPath | Get-Member
+            Write-host "Selected folder for Search is:$SerchPath"
 
-        Write-debug "`r`n`r`n------------------------------------------------------`r`n"
-        Write-debug 'Get Folder to delete:'
+            
 
-         #https://stackoverflow.com/questions/28631419/how-to-recursively-remove-all-empty-folders-in-powershell
-        <########################################################################
-            define a script block that will remove empty folders under a root folder, 
-            using tail-recursion to ensure that it only walks the folder tree once. 
-            -Force is used to be able to process hidden files/folders as well.
-        ########################################################################>
-        $tailRecursion = {
-           
-            param(
-                $Path
-            )
+            Write-debug "`r`n`r`n------------------------------------------------------`r`n"
+            Write-debug 'Get Folder to delete:'
 
-            foreach ($childDirectory in Get-ChildItem -Force -LiteralPath $Path -Directory) {
-                    & $tailRecursion -Path $childDirectory.FullName
+            #https://stackoverflow.com/questions/28631419/how-to-recursively-remove-all-empty-folders-in-powershell
+            <########################################################################
+                define a script block that will remove empty folders under a root folder, 
+                using tail-recursion to ensure that it only walks the folder tree once. 
+                -Force is used to be able to process hidden files/folders as well.
+            ########################################################################>
+            $tailRecursion = {
+            
+                param(
+                    $Path
+                )
+
+                foreach ($childDirectory in Get-ChildItem -Force -LiteralPath $Path -Directory) {
+                        & $tailRecursion -Path $childDirectory.FullName
+                    }
+            
+                try { 
+                    $currentChildren = Get-ChildItem -Force -LiteralPath $Path
+                    $isEmpty = $null -eq $currentChildren
+                    if ($isEmpty) {
+                        Write-Verbose "Removing empty folder at path '${Path}'." -Verbose
+                        Remove-Item -Force -LiteralPath $Path -WhatIf
+                    }
+            
                 }
-        
-            try { 
-                $currentChildren = Get-ChildItem -Force -LiteralPath $Path
-                $isEmpty = $null -eq $currentChildren
-                if ($isEmpty) {
-                    Write-Verbose "Removing empty folder at path '${Path}'." -Verbose
-                    Remove-Item -Force -LiteralPath $Path -WhatIf
-                }
-           
+                catch { 
+                    Write-Warning "$global:Modul -  Something went wrong" 
+                }	
             }
-            catch { 
-                Write-Warning "$global:Modul -  Something went wrong" 
-            }	
+
+            & $tailRecursion -Path $SerchPath
         }
-
-        & $tailRecursion -Path $SerchPath
-
     }
 
     function okButtonClick (){

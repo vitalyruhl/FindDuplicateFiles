@@ -47,12 +47,13 @@
     $radioButton3.Location = New-Object System.Drawing.Point(8, 96)
     $radioButton3.Name = 'radioButton3'
     $radioButton3.Text = 'Delete'
-    $form.Controls.Add($groupBox)
 
     # radioButton4
-    $radioButton4.Location = New-Object System.Drawing.Point(8, 96)
+    $radioButton4.Location = New-Object System.Drawing.Point(8, 128)
     $radioButton4.Name = 'radioButton3'
     $radioButton4.Text = 'Delete empty Folder'
+
+
     $form.Controls.Add($groupBox)
  
 #endregion

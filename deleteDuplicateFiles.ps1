@@ -100,32 +100,25 @@ if ($AdminRightsRequired){
         $FilesToDelete = $csv | Where-Object{$_.MarkToDelete -eq $true}
         #$FilesToDelete | Write-debug 
         $FilesToDelete | ForEach-Object {
+            
             $dPath = $_.DirectoryName.replace("\","_").replace(":","-").replace(" ","")
-            $MovePath = "$SerchPath\$dPath\"
-            #Write-debug "Move to Path:$MovePath"
+            $MovePath = $SerchPath + '\' + $dPath + '\'
+            Write-debug "Move to Path:$MovePath"
             
             try {
-           
-                if (!(Test-Path -path $MovePath -ErrorAction SilentlyContinue )) {
-                    if (!(Test-Path -Path $MovePath)) {
- 
-                        New-Item -Path $MovePath -ItemType Directory -ErrorAction Continue # | Out-Null
-                        # todo hier verschieben
-                        Move-Item $_.FullName 
-                    }      
-                }
-                else{
-                     #todo hier verschieben auch
-                      Move-Item $_.FullName 
-                }
+                add-path $MovePath
+                $it = Get-Item $(Resolve-Path $_.FullName) 
+                Write-debug "File to move is selected -->"
+                $it | Write-debug 
+                Write-debug "<-- File to move"
+                $MovePath = $(Resolve-Path $MovePath)               
+               
+                $it | Move-Item -Destination $MovePath -Force
            
             }
             catch { 
                 Write-Warning "$global:Modul -  Something went wrong" 
             }	
-
-            
-           
         }
 
 

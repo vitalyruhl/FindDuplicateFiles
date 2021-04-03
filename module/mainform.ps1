@@ -19,6 +19,7 @@
     $radioButton1 = New-Object System.Windows.Forms.RadioButton
     $radioButton2 = New-Object System.Windows.Forms.RadioButton
     $radioButton3 = New-Object System.Windows.Forms.RadioButton
+    $radioButton4 = New-Object System.Windows.Forms.RadioButton
     $groupBox = New-Object System.Windows.Forms.GroupBox
     $groupBox.Controls.AddRange(
     @(
@@ -46,6 +47,12 @@
     $radioButton3.Location = New-Object System.Drawing.Point(8, 96)
     $radioButton3.Name = 'radioButton3'
     $radioButton3.Text = 'Delete'
+    $form.Controls.Add($groupBox)
+
+    # radioButton4
+    $radioButton4.Location = New-Object System.Drawing.Point(8, 96)
+    $radioButton4.Name = 'radioButton3'
+    $radioButton4.Text = 'Delete empty Folder'
     $form.Controls.Add($groupBox)
  
 #endregion

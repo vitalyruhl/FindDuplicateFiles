@@ -67,17 +67,10 @@ The second script `.\deleteDuplicateFiles.ps1` open a form where you can choose 
 
 <table align="center" width="100%" border="0" bgcolor:=#3f3f3f>
   <tr>
-    <td align="center" width="100%" border="0" >
-    
-i       f you prefer a one-time donation:
-      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-      <input type="hidden" name="cmd" value="_s-xclick" />
-      <input type="hidden" name="hosted_button_id" value="Q3XSPVFAPSKMJ" />
-      <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Spenden mit dem PayPal-Button" />
-      <img alt="Paypal" border="0" src="https://www.paypal.com/de_DE/i/scr/pixel.gif" width="1" height="1" />
-      </form>
+    <td border="0">  
+        [[if you prefer a one-time donation:](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/FamilieRuhl)
     </td>
-    <td align="center" width="100%" border="0" >  
+    <td border="0" >  
         Become a patron, by simply clicking on this button (**very appreciated!**):
         [![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/join/6555448/checkout?ru=undefined)
     </td>

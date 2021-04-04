@@ -66,15 +66,20 @@ The second script `.\deleteDuplicateFiles.ps1` open a form where you can choose 
 ## Donate
 
 <table align="center" width="100%" border="0" bgcolor:=#3f3f3f>
-  <tr>
-    <td border="0">  
-        [[if you prefer a one-time donation:](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/FamilieRuhl)
-    </td>
-    <td border="0" >  
-        Become a patron, by simply clicking on this button (**very appreciated!**):
-        [![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/join/6555448/checkout?ru=undefined)
-    </td>
-  </tr>
+<tr align="center">
+<td align="center">  
+if you prefer a one-time donation
+
+[![](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://paypal.me/FamilieRuhl)
+</td>
+
+<td align="center">  
+Become a patron, by simply clicking on this button (**very appreciated!**):
+
+[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/join/6555448/checkout?ru=undefined)
+
+</td>
+</tr>
 </table>
 
 ---

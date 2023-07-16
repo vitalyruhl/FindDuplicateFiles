@@ -1,3 +1,13 @@
+# C:\Windows\System32\WindowsPowerShell\v1.0
+
+<#______________________________________________________________________________________________________________________
+
+	(c) Vitaly Ruhl 2021-2022
+    Homepage: Vitaly-Ruhl.de
+    Github:https://github.com/vitalyruhl/
+    License: GNU General Public License v3.0
+______________________________________________________________________________________________________________________#>
+#>
 
 #region Checkform
 # https://www.windowspro.de/script/grafische-oberflaeche-gui-fuer-powershell-scripts-erstellen

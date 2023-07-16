@@ -1,11 +1,14 @@
-﻿<#
-______________________________________________________________________________________________________________________
+﻿
+# C:\Windows\System32\WindowsPowerShell\v1.0
 
-	(c) HERMES Systeme GmbH                             Telefon: +49 (0) 4431 9360-0
-        MSR & Automatisierungstechnik                   Telefax: +49 (0) 4431 9360-60
-        Visbeker Str. 55                                E-Mail: info@hermes-systeme.de
-        27793 Wildeshausen                              Home: www.hermes-systeme.de
-______________________________________________________________________________________________________________________
+<#______________________________________________________________________________________________________________________
+
+	(c) Vitaly Ruhl 2021-2022
+    Homepage: Vitaly-Ruhl.de
+    Github:https://github.com/vitalyruhl/
+    License: GNU General Public License v3.0
+______________________________________________________________________________________________________________________#>
+#>
 
 $Funktion = 'recentlyUsedFunctions.ps1'
 

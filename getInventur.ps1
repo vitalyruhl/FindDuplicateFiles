@@ -1,12 +1,13 @@
 ﻿
-<#
-______________________________________________________________________________________________________________________
+# C:\Windows\System32\WindowsPowerShell\v1.0
 
-	(c) HERMES Systeme GmbH                             Telefon: +49 (0) 4431 9360-0
-        MSR & Automatisierungstechnik                   Telefax: +49 (0) 4431 9360-60
-        Visbeker Str. 55                                E-Mail: info@hermes-systeme.de
-        27793 Wildeshausen                              Home: www.hermes-systeme.de
-______________________________________________________________________________________________________________________
+<#______________________________________________________________________________________________________________________
+
+	(c) Vitaly Ruhl 2021-2022
+    Homepage: Vitaly-Ruhl.de
+    Github:https://github.com/vitalyruhl/
+    License: GNU General Public License v3.0
+______________________________________________________________________________________________________________________#>
 #>
 
 $Funktion = 'get-inventur.ps1'
@@ -42,27 +43,31 @@ $AdminRightsRequired = $false #set $true, if Admin-Rights are for the Script req
 $global:Modul = 'Main'
 Clear-Host
 
-if ($AdminRightsRequired){
-    log "get Adminrights - Allow? $AdminRightsRequired"
-    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-    $princ = New-Object System.Security.Principal.WindowsPrincipal($identity)
-    if (!$princ.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)) {
-        $powershell = [System.Diagnostics.Process]::GetCurrentProcess()
-        $psi = New-Object System.Diagnostics.ProcessStartInfo $powerShell.Path
-        $script = $MyInvocation.MyCommand.Path
-        $prm = $script
-        foreach ($a in $args) {
-            $prm += ' ' + $a
-        }
-        $psi.Arguments = $prm
-        $psi.Verb = 'runas'
-        [System.Diagnostics.Process]::Start($psi) | Out-Null
-        return;
-    }
-    #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+#region begin Request admin rights
+if ($AdminRightsRequired) {
+	#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	##https://www.heise.de/ct/hotline/PowerShell-Skript-mit-Admin-Rechten-1045393.html
+	$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+	$princ = New-Object System.Security.Principal.WindowsPrincipal($identity)
+	if (!$princ.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)) {
+		$powershell = [System.Diagnostics.Process]::GetCurrentProcess()
+		$psi = New-Object System.Diagnostics.ProcessStartInfo $powerShell.Path
+		$script = $MyInvocation.MyCommand.Path
+		$prm = $script
+		foreach ($a in $args) {
+			$prm += ' ' + $a
+		}
+		$psi.Arguments = $prm
+		$psi.Verb = "runas"
+		[System.Diagnostics.Process]::Start($psi) | Out-Null
+		return;
+	}
+	#+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 }
+#endregion
+
+
 
 if ($global:debug) {
     #Clear-Host
